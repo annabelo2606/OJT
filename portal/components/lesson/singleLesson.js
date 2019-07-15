@@ -10,14 +10,11 @@ apple.controller('singleLesson', ['$rootScope', '$scope', '$state', '$stateParam
         data.lessonid = $scope.lessonId;
         server.requestPhp(data, "GetStudentsAttendance").then(function(data) {
             $scope.students = data;
-            data = {};
-            server.requestPhp(data, "GetAttendanceStatuses").then(function(data) {
-                $scope.statuses = data;
-                $scope.student.attendanceStatus
-            });
         });
-
-
+        data = {};
+        server.requestPhp(data, "GetAttendanceStatuses").then(function(data) {
+            $scope.statuses = data;
+        });
 
         $scope.UpdateCheckStudentStatus = function(student, lessonid) {
             var data = {};
@@ -41,10 +38,7 @@ apple.controller('singleLesson', ['$rootScope', '$scope', '$state', '$stateParam
             } else {
                 $scope.UpdateCheckStudentStatus(student, $scope.lessonId);
             }
-
         }
-
-
 
         $scope.goBack = function() {
             window.history.back();
