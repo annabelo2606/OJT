@@ -204,16 +204,6 @@
 
                 <div ng-if="isAdmin">
                     <p>תאריכי ושעות שיוערים</p>
-                    <!-- <div>
-						<input type="text" class="form-input search-bar" placeholder="חיפוש שיעור" ng-model="displayedEnrollments[role.enrollmentroleid].search" 
-						ng-keypress="preventSubmit($event)" ng-keyup="$event.keyCode == 13?displayedEnrollments[role.enrollmentroleid].page=0:'';
-						 $event.keyCode == 13?getEnrolledUsersInRole(role.enrollmentroleid):'';">
-						<div class="clickable search-button"><i class="fa fa-search" aria-hidden="true" 
-							ng-click="displayedEnrollments[role.enrollmentroleid].page=0; getEnrolledUsersInRole(role.enrollmentroleid);"></i></div>
-                    </div>
-					<page-navigator data="{'roleid':role.enrollmentroleid}" page-count="displayedEnrollments[role.enrollmentroleid].pageCount" 
-					page-index="displayedEnrollments[role.enrollmentroleid].page" go-to-page="goToEnrolledUsersOfRolePage" 
-					loading="displayedEnrollments[role.enrollmentroleid].loading"></page-navigator> -->
                     <div class="scrolling-table-wrapper">
                         <div class="scrolling-table">
                             <table class="table-striped table-bordered table-hover midrows">
@@ -226,7 +216,7 @@
                                 </thead>
                                 <tbody class="fixed-tbl">
                                     <tr ng-repeat="meetingId in meetingIds">
-                                        <td class="small-cell fixed-col1" ng-click="goToUserPage(user)">{{meetingId.num}}</td>
+                                        <td class="small-cell fixed-col1" ng-click="goToSingleLesson(meetingId.lessonid, meetingId.num)">{{meetingId.num}}</td>
                                         <td class="small-cell fixed-col2">{{meetingId.beginningdate | date : 'dd/MM/yyyy'}} </td>
                                         <td class="small-cell">{{meetingId.beginningdate | date : 'HH:mm'}} </td>
                                     </tr>
@@ -234,14 +224,8 @@
                             </table>
                         </div>
                     </div>
-                    <!-- <page-navigator data="{'roleid':role.enrollmentroleid}" page-count="displayedEnrollments[role.enrollmentroleid].pageCount" page-index="displayedEnrollments[role.enrollmentroleid].page" go-to-page="goToEnrolledUsersOfRolePage" loading="displayedEnrollments[role.enrollmentroleid].loading"></page-navigator>
-                    <div excel-export file-name="{{course.name}}_{{role.enrollmentrole}}" get-data="getEnrolledUsersInRoleFull" param-obj="{'param1':  role}" make-header="false" ng-show="displayedEnrollments[role.enrollmentroleid].users.length>0"></div> -->
                     <hr>
                 </div>
-
-
-
-
 
             </div>
             <div ng-if="!courseid">

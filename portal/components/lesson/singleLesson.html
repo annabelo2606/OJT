@@ -1,4 +1,38 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 11e8edb05cdb7a54feaccc1ecc797bb7e69c4c5b
+<div id="wrapper">
+    <header></header>
+    <div id="page-wrapper">
+        <h2 class="page-title"> שיעור {{lessonNum}}</h2>
+        <div>
+            <div class="scrolling-table-wrapper">
+                <div class="scrolling-table">
+                    <table class="table-striped table-bordered table-hover midrows">
+                        <thead class="fixed-tbl">
+                            <tr>
+                                <th class="small-cell fixed-col1">שם</th>
+                                <th class="small-cell fixed-col2">שם משפחה</th>
+                                <th class="small-cell">נוכחות</th>
+                            </tr>
+                        </thead>
+                        <tbody class="fixed-tbl">
+                            <tr ng-repeat="student in students">
+                                <td class="small-cell fixed-col1">{{student.firstname}}</td>
+                                <td class="small-cell fixed-col2">{{student.lastname}} </td>
+                                <td class="small-cell">
+                                    <select ng-model="student.attendanceStatus" ng-change="UpdateStudentAttendanceStatus(student)">
+                                    <option value="0">נוכח</option>
+                                    <option value="1">איחר</option>
+                                    <option value="2">לא נוכח</option>
+                                    <option value="3">טרם עודכן</option>
+                                </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <hr>
+            <button type="button" class="button card-control cancel-card-edit" ng-click="goBack()">בטל</button>
+            <hr>
+        </div>
+    </div>
+</div>

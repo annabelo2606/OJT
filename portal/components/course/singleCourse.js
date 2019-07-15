@@ -588,6 +588,7 @@ apple.controller('singleCourse', ['$rootScope', '$scope', '$state', '$stateParam
 
 
         //Anna 
+        $scope.meetingIds = [];
         var data = {};
         data.courseid = $scope.courseid;
         data.type = "post";
@@ -603,6 +604,12 @@ apple.controller('singleCourse', ['$rootScope', '$scope', '$state', '$stateParam
 
         });
 
+        $scope.goToSingleLesson = function(lessonId, lessonNum) {
+            $state.transitionTo('singleLesson', {
+                lessonId: lessonId,
+                lessonNum: lessonNum
+            });
+        }
 
     }
 ]);
