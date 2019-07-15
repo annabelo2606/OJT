@@ -4,12 +4,20 @@ apple.controller('singleLesson', ['$rootScope', '$scope', '$state', '$stateParam
         $scope.students = [];
         $scope.lessonNum = $stateParams["lessonNum"];
         $scope.lessonId = $stateParams["lessonId"];
+        $scope.statuses = [];
 
         var data = {};
         data.lessonid = $scope.lessonId;
         server.requestPhp(data, "GetStudentsAttendance").then(function(data) {
             $scope.students = data;
+            data = {};
+            server.requestPhp(data, "GetAttendanceStatuses").then(function(data) {
+                $scope.statuses = data;
+                $scope.student.attendanceStatus
+            });
         });
+
+
 
         $scope.UpdateCheckStudentStatus = function(student, lessonid) {
             var data = {};
@@ -36,10 +44,10 @@ apple.controller('singleLesson', ['$rootScope', '$scope', '$state', '$stateParam
 
         }
 
+
+
         $scope.goBack = function() {
-            if (confirm("שינויים שנעשו לא יישמרו")) {
-                window.history.back();
-            }
+            window.history.back();
         };
 
     }

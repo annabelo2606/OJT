@@ -17,13 +17,10 @@
                             <tr ng-repeat="student in students">
                                 <td class="small-cell fixed-col1">{{student.firstname}}</td>
                                 <td class="small-cell fixed-col2">{{student.lastname}} </td>
-                                <td class="small-cell">
-                                    <select ng-model="student.attendanceStatus" ng-change="UpdateStudentAttendanceStatus(student)">
-                                    <option value="0">נוכח</option>
-                                    <option value="1">איחר</option>
-                                    <option value="2">לא נוכח</option>
-                                    <option value="3">טרם עודכן</option>
-                                </select>
+                                <td class="large-cell">
+                                    <select ng-options="status.id as status.name for status in statuses" ng-model="student.attendanceStatus" ng-change="UpdateStudentAttendanceStatus(student)">
+                                        <option value="" style="display: none"></option>
+                                    </select>
                                 </td>
                             </tr>
                         </tbody>
@@ -31,7 +28,7 @@
                 </div>
             </div>
             <hr>
-            <button type="button" class="button card-control cancel-card-edit" ng-click="goBack()">בטל</button>
+            <button type="button" class="button card-control" ng-click="goBack()">חזרה</button>
             <hr>
         </div>
     </div>
